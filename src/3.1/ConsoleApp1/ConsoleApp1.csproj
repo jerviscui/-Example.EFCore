@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modeling\OwnedEntities\OwnedEntities.csproj" />
+    <ProjectReference Include="..\Modeling\ReadonlyProperties\ReadonlyProperties.csproj" />
   </ItemGroup>
 
 </Project>

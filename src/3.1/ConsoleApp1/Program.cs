@@ -18,8 +18,8 @@ namespace ConsoleApp1
             builder.UseLoggerFactory(logger);
 
             //tests
-            using var tests = new OwnedTests(builder.Options);
-            tests.OwnsOneTest();
+            using var tests = new ReadonlyTests(builder.Options);
+            tests.Test();
 
             Console.ReadLine();
         }
