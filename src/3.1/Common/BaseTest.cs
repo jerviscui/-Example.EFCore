@@ -10,12 +10,15 @@ namespace Common
     {
         public TDbContext DbContext { get; private set; }
 
-        protected BaseTest(DbContextOptions options)
+        protected BaseTest(DbContextOptions options, bool recreate = true)
         {
             DbContext = (TDbContext)Activator.CreateInstance(typeof(TDbContext), options);
 
-            DbContext.Database.EnsureDeleted();
-            DbContext.Database.EnsureCreated();
+            if (recreate)
+            {
+                DbContext.Database.EnsureDeleted();
+                DbContext.Database.EnsureCreated();
+            }
         }
 
         public void Dispose()

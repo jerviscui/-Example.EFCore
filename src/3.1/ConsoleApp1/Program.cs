@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MemoryTables;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OwnedEntities;
 using System;
@@ -15,11 +16,13 @@ namespace ConsoleApp1
 
             var builder = new DbContextOptionsBuilder();
             builder.UseSqlServer("Data Source=.\\sql2017;Initial Catalog=testDb;User ID=sa;Password=123456");
-            builder.UseLoggerFactory(logger);
+            //builder.UseLoggerFactory(logger);
 
             //tests
-            using var tests = new ReadonlyTests(builder.Options);
-            tests.Test();
+            using var tests = new MemoryTablesTests(builder.Options, false);
+            tests.DiskTest();
+            tests.MemoryTest();
+            tests.MemoryOnlyTest();
 
             Console.ReadLine();
         }

@@ -16,7 +16,7 @@ namespace ReadonlyProperties
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Blog>().Property
+            modelBuilder.Entity<Blog>();
         }
 
         public DbSet<Blog> Blogs { get; set; }
